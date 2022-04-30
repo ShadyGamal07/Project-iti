@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OAhwkhgIa27zIFyCuNM/ouh08DDip/p1/Zg4BlzE9ZrTTIWjKOzzuFwX/AZ8asT0RqwUsCRZOk5hB/2EFbWMqQ==",
+  "dgSpecHash": "cWYONHCOouss7vSOIx57NEcZK8ANo++oD+m07aPsOpLZwr4jYljJ12vVpbeDTIZRLJ+8K7hsDyAMtUkGUCV2Cw==",
   "success": true,
-  "projectFilePath": "E:\\ITI\\Grad Project\\Grad Project\\Grad Project.csproj",
+  "projectFilePath": "E:\\ITI\\Grad Project\\Project-iti\\Grad Project\\Grad Project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.3\\microsoft.aspnetcore.cryptography.internal.6.0.3.nupkg.sha512",

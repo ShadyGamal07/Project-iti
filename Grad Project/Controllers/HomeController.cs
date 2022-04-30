@@ -15,6 +15,14 @@ namespace Grad_Project.Controllers
 
         public IActionResult Index()
         {
+            Data.SouqContext db = new Data.SouqContext();
+            var categs = db.Categories.ToList();
+            return View(categs);
+        }
+
+        public IActionResult Categories()
+        {
+         
             return View();
         }
 

@@ -2270,11 +2270,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ITI\\Grad Project\\Grad Project\\Grad Project.csproj",
+      "projectUniqueName": "E:\\ITI\\Grad Project\\Project-iti\\Grad Project\\Grad Project.csproj",
       "projectName": "Grad Project",
-      "projectPath": "E:\\ITI\\Grad Project\\Grad Project\\Grad Project.csproj",
+      "projectPath": "E:\\ITI\\Grad Project\\Project-iti\\Grad Project\\Grad Project.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "E:\\ITI\\Grad Project\\Grad Project\\obj\\",
+      "outputPath": "E:\\ITI\\Grad Project\\Project-iti\\Grad Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
