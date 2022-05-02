@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Grad_Project.Models.cart>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Your Cart</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.id)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+
+}
+    </tbody>
+     <a class="btn btn-primary" asp-controller="product" asp-action="index">Continue Shopping</a>
+</table>
