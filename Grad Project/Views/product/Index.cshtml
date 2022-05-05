@@ -34,7 +34,7 @@
                   <h4>$@item.price</h4> 
                   <br>
                   <a asp-route-id="@item?.id" asp-action="Details" class="btn btn-primary">Details</a>
-                   <a asp-route-id="@item?.id" asp-action="Details" class="btn btn-primary">Add to Cart</a>
+                   <a class="btn btn-primary" asp-route-id="@item?.id" asp-controller="cart" asp-action="index">Add to Cart</a>
               </div>
                 
               </div>

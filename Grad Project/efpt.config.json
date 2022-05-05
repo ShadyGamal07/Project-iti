@@ -22,11 +22,19 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[payment]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[product]",
          "ObjectType": 0
       },
       {
          "Name": "[dbo].[review]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[user]",
          "ObjectType": 0
       }
    ],

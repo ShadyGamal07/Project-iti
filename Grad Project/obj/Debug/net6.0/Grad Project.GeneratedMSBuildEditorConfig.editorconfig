@@ -51,6 +51,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/ITI .Net/Project-iti/Grad Project/Views/payment/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGF5bWVudFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ITI .Net/Project-iti/Grad Project/Views/payment/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGF5bWVudFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ITI .Net/Project-iti/Grad Project/Views/payment/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGF5bWVudFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ITI .Net/Project-iti/Grad Project/Views/payment/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGF5bWVudFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ITI .Net/Project-iti/Grad Project/Views/payment/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccGF5bWVudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/ITI .Net/Project-iti/Grad Project/Views/product/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NccHJvZHVjdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -81,6 +101,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/ITI .Net/Project-iti/Grad Project/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ITI .Net/Project-iti/Grad Project/Views/user/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ITI .Net/Project-iti/Grad Project/Views/user/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ITI .Net/Project-iti/Grad Project/Views/user/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ITI .Net/Project-iti/Grad Project/Views/user/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ITI .Net/Project-iti/Grad Project/Views/user/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ITI .Net/Project-iti/Grad Project/Views/_ViewImports.cshtml]

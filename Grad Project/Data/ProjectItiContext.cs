@@ -21,8 +21,10 @@ namespace Grad_Project.Data
 
         public virtual DbSet<cart> carts { get; set; }
         public virtual DbSet<category> categories { get; set; }
+        public virtual DbSet<payment> payments { get; set; }
         public virtual DbSet<product> products { get; set; }
         public virtual DbSet<review> reviews { get; set; }
+        public virtual DbSet<user> users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -39,12 +41,17 @@ namespace Grad_Project.Data
             {
                 entity.ToTable("cart");
 
-                //entity.Property(e => e.id).ValueGeneratedNever();
+                entity.Property(e => e.ttlPrice).HasColumnType("decimal(18, 0)");
 
                 entity.HasOne(d => d.product)
                     .WithMany(p => p.carts)
                     .HasForeignKey(d => d.productID)
                     .HasConstraintName("FK_cart_product");
+
+                entity.HasOne(d => d.user)
+                    .WithMany(p => p.carts)
+                    .HasForeignKey(d => d.userID)
+                    .HasConstraintName("FK_cart_user");
             });
 
             modelBuilder.Entity<category>(entity =>
@@ -52,6 +59,20 @@ namespace Grad_Project.Data
                 entity.ToTable("category");
 
                 entity.Property(e => e.id).ValueGeneratedNever();
+
+                entity.Property(e => e.photo).HasColumnType("image");
+            });
+
+            modelBuilder.Entity<payment>(entity =>
+            {
+                entity.ToTable("payment");
+
+                entity.Property(e => e.id).ValueGeneratedNever();
+
+                entity.HasOne(d => d.user)
+                    .WithMany(p => p.payments)
+                    .HasForeignKey(d => d.userID)
+                    .HasConstraintName("FK_payment_user");
             });
 
             modelBuilder.Entity<product>(entity =>
@@ -71,6 +92,21 @@ namespace Grad_Project.Data
                 entity.ToTable("review");
 
                 entity.Property(e => e.id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<user>(entity =>
+            {
+                entity.ToTable("user");
+
+                entity.Property(e => e.id).ValueGeneratedNever();
+
+                entity.Property(e => e.email).HasMaxLength(50);
+
+                entity.Property(e => e.name).HasMaxLength(50);
+
+                entity.Property(e => e.phone).HasMaxLength(50);
+
+                entity.Property(e => e.totalAmount).HasColumnType("decimal(18, 0)");
             });
 
             OnModelCreatingPartial(modelBuilder);

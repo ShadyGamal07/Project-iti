@@ -11,46 +11,37 @@ using Grad_Project.Models;
 
 namespace Grad_Project.Controllers
 {
-    public class cartController : Controller
+    public class paymentController : Controller
     {
         private readonly ProjectItiContext _context;
 
-        public cartController(ProjectItiContext context)
+        public paymentController(ProjectItiContext context)
         {
             _context = context;
         }
 
-        // GET: cart
-        public async Task<IActionResult> Index(int? id)
+        // GET: payment
+        public async Task<IActionResult> Index(int? id,decimal? ttlx)
         {
-            if (id != null)
-            {
-                cart c1 = _context.carts.Include(c => c.product).FirstOrDefault(ob => ob.productID == id);
-
-                if (c1 != null)
-                {
-                    //product px = c1.product;
-                    c1.Qty += 1;
-                    c1.ttlPrice = (c1.product.price) * (c1.Qty);
-                }
-                else
-                {
-                    c1 = new cart();
-                    product p1 = _context.products.Find(id);
-                    c1.productID = p1.id;
-                    c1.product = p1;
-                    c1.Qty = 1;
-                    c1.ttlPrice = (c1.product.price) * (c1.Qty);
-                    _context.Add(c1);
-                }
+            var payX = _context.payments.Include(p => p.user)
+                .FirstOrDefault(o => o.userID == id);
                 
+            if (payX == null)
+            {
+                return Content("this user has no payment method");
+            }
+            else
+            {
+                payX.user.totalAmount = ttlx;
                 _context.SaveChanges();
             }
-            var projectItiContext = _context.carts.Include(c => c.product);
+
+            var projectItiContext = _context.payments.Include(c => c.user);
             return View(await projectItiContext.ToListAsync());
+
         }
 
-        // GET: cart/Details/5
+        // GET: payment/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -58,42 +49,42 @@ namespace Grad_Project.Controllers
                 return NotFound();
             }
 
-            var cart = await _context.carts
-                .Include(c => c.product)
+            var payment = await _context.payments
+                .Include(p => p.user)
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (cart == null)
+            if (payment == null)
             {
                 return NotFound();
             }
 
-            return View(cart);
+            return View(payment);
         }
 
-        // GET: cart/Create
+        // GET: payment/Create
         public IActionResult Create()
         {
-            ViewData["productID"] = new SelectList(_context.products, "id", "id");
+            ViewData["cartID"] = new SelectList(_context.carts, "id", "id");
             return View();
         }
 
-        // POST: cart/Create
+        // POST: payment/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,userID,productID,Qty")] cart cart)
+        public async Task<IActionResult> Create([Bind("id,cartID,creditCard")] payment payment)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cart);
+                _context.Add(payment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["productID"] = new SelectList(_context.products, "id", "id", cart.productID);
-            return View(cart);
+            ViewData["cartID"] = new SelectList(_context.carts, "id", "id", payment.userID);
+            return View(payment);
         }
 
-        // GET: cart/Edit/5
+        // GET: payment/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -101,40 +92,37 @@ namespace Grad_Project.Controllers
                 return NotFound();
             }
 
-            var cart = await _context.carts.FindAsync(id);
-            if (cart == null)
+            var payment = await _context.payments.FindAsync(id);
+            if (payment == null)
             {
                 return NotFound();
             }
-            ViewData["productID"] = new SelectList(_context.products, "id", "id", cart.productID);
-            return View(cart);
+            ViewData["cartID"] = new SelectList(_context.carts, "id", "id", payment.userID);
+            return View(payment);
         }
 
-        // POST: cart/Edit/5
+        // POST: payment/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,userID,productID,Qty,ttlPrice,product")] cart cart)
+        public async Task<IActionResult> Edit(int id, [Bind("id,cartID,creditCard")] payment payment)
         {
-            
-            if (id != cart.id)
+            if (id != payment.id)
             {
                 return NotFound();
             }
-            
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    
-                    _context.Update(cart);
+                    _context.Update(payment);
                     await _context.SaveChangesAsync();
-                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!cartExists(cart.id))
+                    if (!paymentExists(payment.id))
                     {
                         return NotFound();
                     }
@@ -145,11 +133,11 @@ namespace Grad_Project.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["productID"] = new SelectList(_context.products, "id", "id", cart.productID);
-            return View(cart);
+            ViewData["cartID"] = new SelectList(_context.carts, "id", "id", payment.userID);
+            return View(payment);
         }
 
-        // GET: cart/Delete/5
+        // GET: payment/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -157,34 +145,31 @@ namespace Grad_Project.Controllers
                 return NotFound();
             }
 
-            var cart = await _context.carts
-                .Include(c => c.product)
+            var payment = await _context.payments
+                .Include(p => p.user)
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (cart == null)
+            if (payment == null)
             {
                 return NotFound();
             }
 
-            return View(cart);
+            return View(payment);
         }
 
-        // POST: cart/Delete/5
+        // POST: payment/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var cart = await _context.carts.FindAsync(id);
-            if (cart.Qty > 1) { cart.Qty--; }
-            else {
-                _context.carts.Remove(cart);                
-            }
+            var payment = await _context.payments.FindAsync(id);
+            _context.payments.Remove(payment);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool cartExists(int id)
+        private bool paymentExists(int id)
         {
-            return _context.carts.Any(e => e.id == id);
+            return _context.payments.Any(e => e.id == id);
         }
     }
 }

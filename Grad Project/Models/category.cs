@@ -15,7 +15,7 @@ namespace Grad_Project.Models
         public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public string photo { get; set; }
+        public byte[] photo { get; set; }
 
         public virtual ICollection<product> products { get; set; }
     }
