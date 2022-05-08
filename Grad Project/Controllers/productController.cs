@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Grad_Project.Data;
 using Grad_Project.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Grad_Project.Controllers
 {
@@ -19,7 +22,7 @@ namespace Grad_Project.Controllers
         {
             _context = context;
         }
-
+        
         // GET: product
         public async Task<IActionResult> Index()
         {

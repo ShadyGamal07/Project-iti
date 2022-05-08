@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Grad_Project.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Grad_Project.Data
 {
