@@ -7,20 +7,11 @@ namespace Grad_Project.Models
 {
     public partial class user
     {
-        public user()
-        {
-            carts = new HashSet<cart>();
-            payments = new HashSet<payment>();
-        }
-
         public int id { get; set; }
         public string name { get; set; }
         public string address { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
         public decimal? totalAmount { get; set; }
-
-        public virtual ICollection<cart> carts { get; set; }
-        public virtual ICollection<payment> payments { get; set; }
     }
 }

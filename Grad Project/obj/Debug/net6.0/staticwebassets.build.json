@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2i2ZEOdiAZ++g7sEK4x4C9sKw7EGZd8bE7d1LrSMKv8=",
+  "Hash": "Jbaavj6ll7c2dUaOgdkZgZ4SQuX3zClyen/E9EKLtnQ=",
   "Source": "Grad Project",
   "BasePath": "_content/Grad Project",
   "Mode": "Default",
@@ -1137,6 +1137,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\apple-touch-icon.png"
+    },
+    {
+      "Identity": "E:\\ITI .Net\\Project-iti\\Grad Project\\wwwroot\\assets\\img\\cart.png",
+      "SourceId": "Grad Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\ITI .Net\\Project-iti\\Grad Project\\wwwroot\\",
+      "BasePath": "_content/Grad Project",
+      "RelativePath": "assets/img/cart.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\cart.png"
     },
     {
       "Identity": "E:\\ITI .Net\\Project-iti\\Grad Project\\wwwroot\\assets\\img\\counts-bg.png",

@@ -24,10 +24,19 @@ namespace Grad_Project.Controllers
         }
         
         // GET: product
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? catID)
         {
-            var projectItiContext = _context.products.Include(p => p.cat);
-            return View(await projectItiContext.ToListAsync());
+            if(catID == null) {
+                var projectItiContext = _context.products.Include(p => p.cat);
+                return View(await projectItiContext.ToListAsync());
+            }
+            else
+            {
+                var projectItiContext = _context.products
+                    .Include(p => p.cat).Where(p=>p.cat_id==catID);
+                return View(await projectItiContext.ToListAsync());
+            }
+            
         }
 
         // GET: product/Details/5

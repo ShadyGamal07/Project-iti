@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Grad_Project.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Grad_Project.Data
 {
@@ -20,6 +19,7 @@ namespace Grad_Project.Data
         {
         }
 
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<cart> carts { get; set; }
         public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<payment> payments { get; set; }
@@ -38,11 +38,32 @@ namespace Grad_Project.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AspNetUser>(entity =>
+            {
+                entity.HasIndex(e => e.NormalizedEmail, "EmailIndex");
+
+                entity.HasIndex(e => e.NormalizedUserName, "UserNameIndex")
+                    .IsUnique()
+                    .HasFilter("([NormalizedUserName] IS NOT NULL)");
+
+                entity.Property(e => e.Email).HasMaxLength(256);
+
+                entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
+
+                entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
+
+                entity.Property(e => e.UserName).HasMaxLength(256);
+
+                entity.Property(e => e.totalAmount).HasColumnType("decimal(18, 2)");
+            });
+
             modelBuilder.Entity<cart>(entity =>
             {
                 entity.ToTable("cart");
 
                 entity.Property(e => e.ttlPrice).HasColumnType("decimal(18, 0)");
+
+                entity.Property(e => e.userID).HasMaxLength(450);
 
                 entity.HasOne(d => d.product)
                     .WithMany(p => p.carts)
@@ -52,14 +73,12 @@ namespace Grad_Project.Data
                 entity.HasOne(d => d.user)
                     .WithMany(p => p.carts)
                     .HasForeignKey(d => d.userID)
-                    .HasConstraintName("FK_cart_user");
+                    .HasConstraintName("FK_cart_AspNetUsers");
             });
 
             modelBuilder.Entity<category>(entity =>
             {
                 entity.ToTable("category");
-
-                entity.Property(e => e.id).ValueGeneratedNever();
 
                 entity.Property(e => e.photo).HasColumnType("image");
             });
@@ -68,12 +87,12 @@ namespace Grad_Project.Data
             {
                 entity.ToTable("payment");
 
-                entity.Property(e => e.id).ValueGeneratedNever();
+                entity.Property(e => e.userID).HasMaxLength(450);
 
                 entity.HasOne(d => d.user)
                     .WithMany(p => p.payments)
                     .HasForeignKey(d => d.userID)
-                    .HasConstraintName("FK_payment_user");
+                    .HasConstraintName("FK_payment_AspNetUsers");
             });
 
             modelBuilder.Entity<product>(entity =>
@@ -91,15 +110,11 @@ namespace Grad_Project.Data
             modelBuilder.Entity<review>(entity =>
             {
                 entity.ToTable("review");
-
-                entity.Property(e => e.id).ValueGeneratedNever();
             });
 
             modelBuilder.Entity<user>(entity =>
             {
                 entity.ToTable("user");
-
-                entity.Property(e => e.id).ValueGeneratedNever();
 
                 entity.Property(e => e.email).HasMaxLength(50);
 

@@ -8,12 +8,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Grad_Project.Data;
 using Grad_Project.Models;
+using Grad_Project.Areas;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+
+
 
 namespace Grad_Project.Controllers
 {
+
+
     public class cartController : Controller
     {
+       
         private readonly ProjectItiContext _context;
 
         public cartController(ProjectItiContext context)
@@ -22,32 +29,34 @@ namespace Grad_Project.Controllers
         }
         [Authorize]
         // GET: cart
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index(int? id,string userName)
         {
             if (id != null)
             {
-                cart c1 = _context.carts.Include(c => c.product).FirstOrDefault(ob => ob.productID == id);
+                cart c1 = _context.carts.Include(c => c.product).FirstOrDefault(ob => ob.productID == id && ob.userName==User.Identity.Name);
 
                 if (c1 != null)
                 {
                     //product px = c1.product;
                     c1.Qty += 1;
                     c1.ttlPrice = (c1.product.price) * (c1.Qty);
+                    c1.userName= User.Identity.Name;
                 }
                 else
                 {
                     c1 = new cart();
                     product p1 = _context.products.Find(id);
-                    c1.productID = p1.id;
                     c1.product = p1;
+                    c1.productID = p1.id;                    
                     c1.Qty = 1;
                     c1.ttlPrice = (c1.product.price) * (c1.Qty);
+                    c1.userName = User.Identity.Name;
                     _context.Add(c1);
                 }
                 
                 _context.SaveChanges();
             }
-            var projectItiContext = _context.carts.Include(c => c.product);
+            var projectItiContext = _context.carts.Include(c => c.product).Where(ob=>ob.userName== User.Identity.Name);
             return View(await projectItiContext.ToListAsync());
         }
 

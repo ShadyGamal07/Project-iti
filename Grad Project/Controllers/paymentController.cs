@@ -21,7 +21,7 @@ namespace Grad_Project.Controllers
         }
 
         // GET: payment
-        public async Task<IActionResult> Index(int? id,decimal? ttlx)
+        public async Task<IActionResult> Index(string id,decimal? ttlx)
         {
             var payX = _context.payments.Include(p => p.user)
                 .FirstOrDefault(o => o.userID == id);
