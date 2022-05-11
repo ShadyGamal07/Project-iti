@@ -2,27 +2,21 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace Grad_Project.Models
 {
-    [Table("Category")]
-    public partial class Category
+    public partial class category
     {
-        public Category()
+        public category()
         {
-            Products = new HashSet<Product>();
+            products = new HashSet<product>();
         }
 
-        [Key]
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Photo { get; set; }
-        public string Description { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+        public string photo { get; set; }
 
-        [InverseProperty("Cat")]
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<product> products { get; set; }
     }
 }

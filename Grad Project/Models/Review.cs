@@ -2,21 +2,15 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace Grad_Project.Models
 {
-    [Table("Review")]
-    public partial class Review
+    public partial class review
     {
-        [Key]
         public int id { get; set; }
-        public string Name { get; set; }
-        [StringLength(100)]
-        public string Email { get; set; }
+        public string name { get; set; }
         public string subject { get; set; }
-        public string Description { get; set; }
+        public string description { get; set; }
+        public string email { get; set; }
     }
 }

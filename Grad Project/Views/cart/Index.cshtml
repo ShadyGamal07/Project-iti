@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Grad_Project.Models.cart>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Your Cart</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+@{
+    decimal? ttlX=0;
+    decimal? qtyXprice = 0;
+    string? userID = "";
+}
+<table class="table table-bordered" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productID)
+            </th>
+            <th>
+                Price per unit
+            </th>
+            <th>
+                total Price 
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            userID = item.userID;
+            qtyXprice = item.Qty * item.product.price;
+            ttlX +=qtyXprice;
+            
+            <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.price)
+            </td>
+            <td>
+                @qtyXprice
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+            </tr>     
+}
+    
+    <tr>
+        <td colspan=4 align="center" style="font-size:x-large">
+            Grand Total
+        </td>
+        <td colspan=4 align="center" style="font-size:x-large">
+            $ @ttlX
+        </td>
+    </tr>
+    </tbody>
+     
+</table>
+
+<p>
+    <br />
+</p>
+
+<a  class="btn btn-primary" asp-controller="product" asp-action="index">Continue Shopping</a>
+<a class="btn btn-success" asp-route-id="@userID" asp-route-ttlx="@ttlX" asp-controller="payment" asp-action="index">Check-Out</a>
+<p>
+    <br />
+</p>

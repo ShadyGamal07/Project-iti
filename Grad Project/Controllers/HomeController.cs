@@ -1,11 +1,18 @@
 ﻿using Grad_Project.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Grad_Project.Data;
 
 namespace Grad_Project.Controllers
 {
     public class HomeController : Controller
     {
+        ProjectItiContext db = new ProjectItiContext();
+        public IActionResult categories()
+        {
+            var cat=db.categories.ToList();
+            return View(cat);
+        }
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -15,14 +22,11 @@ namespace Grad_Project.Controllers
 
         public IActionResult Index()
         {
-            Data.SouqContext db = new Data.SouqContext();
-            var categs = db.Categories.ToList();
-            return View(categs);
+            return View();
         }
 
-        public IActionResult Categories()
+        public IActionResult Contact()
         {
-         
             return View();
         }
 

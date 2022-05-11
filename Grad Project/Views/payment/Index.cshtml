@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Grad_Project.Models.payment>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.creditCard)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userID)
+            </th>
+            <th>
+                name
+            </th>
+            <th>
+                phone
+            </th>
+            <th>
+                address
+            </th>
+            <th>
+                email
+            </th>
+            <th>
+                total amount
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.creditCard)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.totalAmount)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>*@
+                <img width=115px height=80px src="~/assets/img/visa-removebg-preview.png"/>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<img style="margin-left:500px" src="~/assets/img/thankyou.jpg"/>

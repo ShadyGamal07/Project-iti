@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ITI\\Grad Project\\Project-iti\\Grad Project\\Grad Project.csproj": {}
+    "C:\\Users\\Dell\\Desktop\\New folder (3)\\Project-iti\\Grad Project\\Grad Project.csproj": {}
   },
   "projects": {
-    "E:\\ITI\\Grad Project\\Project-iti\\Grad Project\\Grad Project.csproj": {
+    "C:\\Users\\Dell\\Desktop\\New folder (3)\\Project-iti\\Grad Project\\Grad Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ITI\\Grad Project\\Project-iti\\Grad Project\\Grad Project.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\Desktop\\New folder (3)\\Project-iti\\Grad Project\\Grad Project.csproj",
         "projectName": "Grad Project",
-        "projectPath": "E:\\ITI\\Grad Project\\Project-iti\\Grad Project\\Grad Project.csproj",
+        "projectPath": "C:\\Users\\Dell\\Desktop\\New folder (3)\\Project-iti\\Grad Project\\Grad Project.csproj",
         "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "E:\\ITI\\Grad Project\\Project-iti\\Grad Project\\obj\\",
+        "outputPath": "C:\\Users\\Dell\\Desktop\\New folder (3)\\Project-iti\\Grad Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,23 +42,43 @@
           "dependencies": {
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.3, )"
+              "version": "[6.0.4, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.3, )"
+              "version": "[6.0.4, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[6.0.3, )"
+              "version": "[6.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.3, )"
+              "version": "[6.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.3, )"
+              "version": "[6.0.4, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.3.0, )"
             }
           },
           "imports": [
